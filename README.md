@@ -12,3 +12,7 @@ Organize items within a tiered structure with Drag and Drop API.
 - [x] Delete Tier
 - [x] Clear Tier Items
 - [x] Add Tier Below or Above
+
+### Screenshot
+
+![TierList Maker](https://raw.githubusercontent.com/refinedguides/tierlist-maker/main/screenshot.png)
