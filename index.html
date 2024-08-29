@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TierList Maker</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="main.js"></script>
+  </head>
+  <body>
+    <h1>TierList Maker</h1>
+
+    <div class="tiers container"></div>
+
+    <div class="cards container">
+      <img src="https://placehold.co/100/orange/fff" alt="" />
+      <img src="https://placehold.co/200/dodgerblue/fff" alt="" />
+      <img src="https://placehold.co/150x100/green/fff" alt="" />
+      <img src="https://placehold.co/120x150/red/fff" alt="" />
+      <img src="https://placehold.co/220x190/purple/fff" alt="" />
+      <img src="https://placehold.co/300x120/teal/fff" alt="" />
+      <img src="https://placehold.co/145/pink/fff" alt="" />
+      <img src="https://placehold.co/90/hotpink/fff" alt="" />
+      <img src="https://placehold.co/145/brown/fff" alt="" />
+      <img src="https://placehold.co/110x165/darkorchid/fff" alt="" />
+      <img src="https://placehold.co/220/bisque/fff" alt="" />
+      <img src="https://placehold.co/135x150/lightseagreen/fff" alt="" />
+    </div>
+
+    <dialog class="settings-modal">
+      <section>
+        <div class="colors"></div>
+
+        <textarea class="tier-label" placeholder="Tier label"></textarea>
+
+        <button id="delete">Delete Row</button>
+        <button id="clear">Clear Row</button>
+        <button id="prepend">Add a Row Above</button>
+        <button id="append">Add a Row Below</button>
+      </section>
+    </dialog>
+  </body>
+</html>

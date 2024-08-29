@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #27272a;
+  --tier-bg-color: #404040;
+  --tier-control-bg-color: #262626;
+  --border-color: #0a0a0a;
+  --card-size: 75px;
+}
+
+body {
+  background: var(--bg-color);
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  margin: 1rem 0;
+  user-select: none;
+}
+
+img {
+  width: var(--card-size);
+  aspect-ratio: 1;
+  object-fit: cover;
+  cursor: grab;
+}
+
+img.dragging {
+  opacity: 0.25;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  transition: 0.5s;
+}
+
+.container {
+  width: min(1200px, 80%);
+  margin: auto;
+  border: 2px solid var(--border-color);
+}
+
+.tiers:empty::before {
+  content: "Click on the title to add a new tier.";
+  height: var(--card-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.875rem;
+  background: var(--tier-bg-color);
+}
+
+.tier {
+  background: var(--tier-bg-color);
+  display: flex;
+  gap: 2px;
+}
+
+.tier:not(:last-child) {
+  border-bottom: 2px solid var(--border-color);
+}
+
+.label {
+  flex-shrink: 0;
+  width: 100px;
+  min-height: var(--card-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color, lightcoral);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.label span {
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.items {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.controls {
+  width: 50px;
+  background: var(--tier-control-bg-color);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+}
+
+.controls button {
+  font-size: 1rem;
+  background: transparent;
+  color: #fff;
+  opacity: 0.75;
+}
+
+.controls button:is(:active, :hover) {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .controls {
+    grid-template-columns: repeat(2, 1fr);
+    width: 64px;
+  }
+
+  .controls .settings {
+    grid-row: span 2;
+  }
+
+  .controls button {
+    font-size: 1.5rem;
+  }
+}
+
+.cards {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  min-height: calc(var(--card-size) * 2);
+  background: var(--tier-bg-color);
+}
+
+.settings-modal[open] {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.settings-modal::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.settings-modal section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 2rem;
+  width: max-content;
+}
+
+.colors,
+.tier-label {
+  grid-column: span 2;
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.colors input {
+  appearance: none;
+}
+
+.colors label {
+  width: 1rem;
+  height: 1rem;
+  background: var(--color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.colors label:has(input:checked)::before {
+  content: "\F26A";
+  font-family: "bootstrap-icons";
+  background: #fff;
+  color: var(--color);
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.colors label:has(input:checked) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--color), 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.tier-label {
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  outline-color: var(--border-color);
+  padding: 0.5rem;
+  resize: none;
+}
+
+.settings-modal button {
+  text-wrap: nowrap;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  color: #000;
+  font-size: 0.875rem;
+}
+
+.settings-modal button:is(:active, :hover) {
+  background: lightgray;
+}
